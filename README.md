@@ -1,10 +1,270 @@
 # API Consulta Correo de Intercambio SII por RUT
 
-## Descripción
+# API de Correo de Intercambio SII para Facturacion Electronica
 
-Esta API permite consultar el **correo electrónico de intercambio actualizado** de un contribuyente a partir de su **RUT**.
+> **Valide en tiempo real el correo de intercambio de sus clientes y proveedores antes de emitir un DTE.**  
+> Evite rechazos, reclamos por documentos no recibidos, retrasos de pago y reprocesos operativos en su ERP o plataforma de facturacion.
 
-El objetivo principal es facilitar la integración de sistemas ERP, facturación electrónica, recepción de DTE y procesos automáticos relacionados con documentos tributarios electrónicos en Chile.
+<p>
+  <strong>Actualizacion diaria</strong> &nbsp;|&nbsp;
+  <strong>API REST JSON</strong> &nbsp;|&nbsp;
+  <strong>Datos sincronizados desde SII</strong> &nbsp;|&nbsp;
+  <strong>Compatible con ERP, ecommerce e integradores</strong>
+</p>
+
+---
+
+## Que es el correo de intercambio
+
+El **correo de intercambio** es la casilla electronica registrada por un contribuyente para recibir los archivos **XML de Documentos Tributarios Electronicos (DTE)** enviados por sus proveedores.
+
+Esta casilla se utiliza en operaciones como:
+
+- Facturas electronicas.
+- Notas de credito y debito.
+- Guias de despacho.
+- Otros documentos tributarios electronicos.
+
+> El correo de intercambio **no es un correo comun de contacto comercial**. Es una pieza critica del flujo tributario electronico entre empresas, sistemas ERP, plataformas de facturacion e integradores DTE.
+
+---
+
+## Por que es critico validar este correo
+
+Cuando una empresa emite un DTE, no basta con generar la factura. El XML debe llegar correctamente al receptor para que el documento pueda ser procesado por su sistema contable, ERP o flujo de compras.
+
+### Flujo correcto
+
+```text
+Proveedor
+  -> XML enviado
+  -> Correo de intercambio vigente
+  -> ERP receptor
+  -> Registro de compras
+  -> Aprobacion y pago
+```
+
+### Flujo con correo incorrecto o desactualizado
+
+```text
+Proveedor
+  -> XML no recibido
+  -> Cliente no visualiza el DTE
+  -> Factura queda fuera del flujo interno
+  -> Reclamos y reenvios manuales
+  -> Retrasos de pago o rechazo operativo
+```
+
+---
+
+## Problemas reales de usar un correo desactualizado
+
+Un correo de intercambio incorrecto puede generar impactos operativos inmediatos:
+
+| Problema | Impacto |
+| --- | --- |
+| Facturas no visibles en el ERP del cliente | El documento no entra al flujo de aprobacion |
+| Reclamos por "factura no recibida" | Aumenta la carga de soporte y cobranza |
+| Reenvio manual de XML | Se pierde automatizacion y trazabilidad |
+| Demoras en conciliacion contable | Compras y finanzas trabajan con informacion incompleta |
+| Retrasos en pago a proveedores | El DTE no avanza en el proceso interno |
+| Riesgo de incumplimiento operativo | Se dificulta acreditar recepcion documental |
+
+---
+
+## PDF vs XML: una diferencia clave
+
+> **El PDF no reemplaza al XML.**
+
+El **PDF** es solo una representacion visual de la factura. Sirve para lectura humana, pero no es el documento usado por los sistemas para integracion tributaria y recepcion automatica.
+
+El **XML del DTE** es el archivo electronico que permite a los sistemas validar, registrar, integrar y procesar la informacion tributaria entre empresas.
+
+| Archivo | Funcion |
+| --- | --- |
+| PDF | Visualizacion del documento para personas |
+| XML | Documento electronico usado para integracion entre sistemas |
+
+---
+
+## Beneficios de consultar el correo en tiempo real
+
+| Metodo | Riesgo operativo | Recomendacion |
+| --- | ---: | --- |
+| Correo guardado hace meses | Alto | No recomendado |
+| Excel o maestro manual | Alto | Propenso a errores |
+| Consulta API actualizada diariamente | Bajo | Recomendado |
+
+Con la API de Factronica puede validar el correo de intercambio antes de emitir, reenviar o sincronizar documentos, manteniendo su operacion conectada con informacion actualizada.
+
+---
+
+## Por que cambia el correo de intercambio
+
+Las empresas pueden modificar su casilla por razones tecnicas u operativas:
+
+- Cambio de proveedor de facturacion electronica.
+- Migracion de ERP.
+- Cambio de integrador DTE.
+- Centralizacion de recepcion documental.
+- Actualizacion de datos registrados ante el SII.
+
+Por eso, **no es recomendable guardar el correo indefinidamente** sin volver a validarlo.
+
+---
+
+## Actualizacion diaria desde fuentes oficiales
+
+Factronica sincroniza diariamente la informacion publicada por el SII para mantener disponible una base actualizada de correos de intercambio.
+
+Esto permite entregar una respuesta confiable para sistemas que necesitan automatizacion, trazabilidad y continuidad operacional.
+
+**Indicadores de servicio**
+
+| Caracteristica | Detalle |
+| --- | --- |
+| Base procesada | +1.000.000 correos |
+| Actualizacion | Diaria y automatica |
+| Formato | REST JSON |
+| Integracion | Compatible con cualquier ERP |
+| Respuesta | En milisegundos |
+
+---
+
+## Casos de uso
+
+### ERP y software de facturacion
+
+Valide automaticamente el correo de intercambio antes de emitir un DTE, reduciendo rechazos y reclamos por documentos no recibidos.
+
+### Marketplace y ecommerce
+
+Automatice el envio de XML a clientes, proveedores y empresas que requieren recepcion documental integrada.
+
+### Integradores contables
+
+Sincronice la recepcion documental y mejore la trazabilidad de facturas, notas de credito, guias y otros DTE.
+
+### Sistemas de compras
+
+Detecte cambios de casilla de intercambio y evite que documentos tributarios queden fuera del flujo de aprobacion.
+
+### Automatizacion tributaria
+
+Reduzca errores operativos, reenvios manuales y validaciones internas repetitivas.
+
+---
+
+## Ejemplo tecnico
+
+### Request
+
+```http
+GET /api/correo-intercambio?rut=76086428-5
+```
+
+### Response
+
+```json
+{
+  "estado": true,
+  "rut": "76086428-5",
+  "razon_social": "EMPRESA DEMO SPA",
+  "correo_intercambio": "dte@empresa.cl",
+  "actualizado": "2026-05-21"
+}
+```
+
+---
+
+## Arquitectura recomendada
+
+```text
+ERP / Ecommerce / Plataforma DTE
+  -> Factronica API
+  -> Base sincronizada SII
+  -> Correo de intercambio actualizado
+  -> Envio XML al receptor correcto
+```
+
+### Linea de actualizacion
+
+```text
+SII publica informacion
+  -> Factronica sincroniza diariamente
+  -> API normaliza datos
+  -> Cliente consulta por RUT
+  -> Sistema emite o reenvia con mayor confianza
+```
+
+---
+
+## Para proveedores de software
+
+Esta API esta pensada para empresas que necesitan integrar validacion tributaria en sus propios productos:
+
+- ERP.
+- Software contable.
+- Ecommerce B2B.
+- Middleware DTE.
+- Integradores tributarios.
+- Plataformas SaaS.
+- Sistemas de compras y abastecimiento.
+
+> Si su plataforma emite, recibe o procesa DTE, validar el correo de intercambio antes de operar mejora la continuidad del flujo documental.
+
+---
+
+## Funcionalidades premium sugeridas
+
+Estas capacidades pueden complementar la consulta individual:
+
+| Funcionalidad | Valor para el cliente |
+| --- | --- |
+| Consulta batch por multiples RUT | Procesar carteras completas de clientes o proveedores |
+| Webhooks de cambios | Avisar cuando cambia un correo de intercambio |
+| Historial de cambios | Auditar modificaciones de casillas |
+| Validacion MX/DNS | Verificar estado tecnico del dominio de correo |
+| Descarga diaria CSV | Mantener sistemas internos sincronizados |
+| SDK PHP / Node / Python | Acelerar implementaciones tecnicas |
+
+---
+
+## Preguntas frecuentes
+
+### El correo viene directamente del SII?
+
+Si. La informacion es obtenida desde bases oficiales publicadas por el SII y sincronizada por Factronica.
+
+### Cada empresa tiene un correo distinto?
+
+Si. Cada contribuyente puede registrar su propia casilla de intercambio para recepcion de DTE.
+
+### Que pasa si envio el XML al correo incorrecto?
+
+El receptor podria no recibir el DTE en su sistema ERP, generando reclamos, reenvios manuales y demoras de pago.
+
+### El PDF reemplaza al XML?
+
+No. El PDF es una representacion visual. El XML es el documento electronico usado para integracion tributaria entre sistemas.
+
+### Con que frecuencia se actualiza la informacion?
+
+Factronica sincroniza diariamente la informacion publicada por el SII.
+
+---
+
+## Terminos relacionados
+
+Correo intercambio SII, mail intercambio DTE, consultar correo facturacion electronica, API SII Chile, XML factura electronica Chile, correo recepcion DTE, integracion facturacion electronica, recepcion automatica XML, consulta contribuyente SII, API RUT Chile.
+
+---
+
+## Mensaje comercial sugerido
+
+> **Evite rechazos y retrasos de pago validando el correo de intercambio antes de emitir cada DTE.**
+
+Mantenga su ERP sincronizado con los correos oficiales de intercambio publicados por el SII y reduzca errores operativos en la recepcion documental electronica.
 
 ---
 
