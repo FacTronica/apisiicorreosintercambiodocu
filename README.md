@@ -10,6 +10,7 @@
   <strong>Compatible con ERP, ecommerce e integradores</strong>
 </p>
 
+Más info en: https://sistemafactronica.cl/api_sii_correosintercambio.php
 ---
 
 ## Que es el correo de intercambio
@@ -258,7 +259,7 @@ Correo intercambio SII, mail intercambio DTE, consultar correo facturacion elect
 
 ---
 
-## Mensaje comercial sugerido
+## El correo de Intercambio es Muy Importante
 
 > **Evite rechazos y retrasos de pago validando el correo de intercambio antes de emitir cada DTE.**
 
