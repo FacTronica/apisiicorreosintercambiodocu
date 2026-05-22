@@ -1,8 +1,6 @@
-# API Consulta Correo de Intercambio SII por RUT
+# API Consulta Correo de Intercambio SII para Facturacion Electronica
 
-# API de Correo de Intercambio SII para Facturacion Electronica
-
-> **Valide en tiempo real el correo de intercambio de sus clientes y proveedores antes de emitir un DTE.**  
+> **Api para obtener en tiempo real el correo de intercambio de sus clientes antes de emitir un DTE.**  
 > Evite rechazos, reclamos por documentos no recibidos, retrasos de pago y reprocesos operativos en su ERP o plataforma de facturacion.
 
 <p>
