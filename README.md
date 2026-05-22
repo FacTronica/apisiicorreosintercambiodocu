@@ -25,7 +25,7 @@ GET https://dev.factronica.cl/api/sii_herramientas_correointercambio/index.php
 ### Ejemplo
 
 ```http
-https://dev.factronica.cl/api/sii_herramientas_correointercambio/index.php?rut=76086428-5
+https://dev.factronica.cl/api/sii_herramientas_correointercambio/index.php?rut=77777777-7
 ```
 
 ---
@@ -40,19 +40,19 @@ X-API-KEY: TU_TOKEN_API
 
 ---
 
-## Ejemplo en PHP 5.6
+## Ejemplo en PHP 
 
 ```php
 <?php
 #
 # ============================================
 # TEST API CONSULTA CONTRIBUYENTE
-# Compatible PHP 5.6
+# Compatible PHP 
 # ============================================
 
 #
 # URL API
-$url = "https://dev.factronica.cl/api/sii_herramientas_correointercambio/index.php?rut=76086428-5";
+$url = "https://dev.factronica.cl/api/sii_herramientas_correointercambio/index.php?rut=77777777-7";
 
 #
 # TOKEN API
@@ -146,7 +146,7 @@ curl_close($curl);
     "estado": true,
     "mensaje": "Consulta realizada correctamente",
     "datos": {
-        "rut": "76086428-5",
+        "rut": "77777777-7",
         "razon_social": "EMPRESA DEMO SPA",
         "num_resolucion": "123",
         "fecha_resolucion": "2024-01-01",
@@ -211,40 +211,8 @@ Antes de consumir la API se recomienda validar:
 ## Ejemplo de consumo con cURL
 
 ```bash
-curl -X GET "https://dev.factronica.cl/api/sii_herramientas_correointercambio/index.php?rut=76086428-5" \
--H "X-API-KEY: TU_TOKEN_API"
+curl -X GET "https://dev.factronica.cl/api/sii_herramientas_correointercambio/index.php?rut=77777777-7" -H "X-API-KEY: TU_TOKEN_API"
 ```
-
----
-
-## Requisitos
-
-Para consumir la API desde PHP se requiere:
-
-- PHP 5.6 o superior.
-- Extensión `curl` habilitada.
-- Acceso HTTPS al dominio de la API.
-
-En Debian/Ubuntu puede instalarse con:
-
-```bash
-apt install php5.6-curl
-```
-
-Luego reiniciar Apache o PHP-FPM según corresponda.
-
----
-
-## Seguridad
-
-Recomendaciones importantes:
-
-- No publicar el token real en repositorios públicos.
-- Guardar el token en un archivo de configuración fuera del repositorio.
-- Usar siempre HTTPS.
-- Registrar logs de errores sin exponer el token.
-- Implementar control de acceso por IP si la API será usada solo por servidores autorizados.
-
 ---
 
 ## Uso esperado
